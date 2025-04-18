@@ -49,6 +49,12 @@ public class UserBookingService {
         //object would be of type List instead of List<User> as generic always is lost in runtime
     }
 
+    public void saveUserToFile() throws IOException{
+        File userFile = new File(Users_Path);
+        objectMapper.writeValue(userFile, usersList);
+        //writeValue serialize java into json file 
+    }
+
 
     //Optional<T> is like a gift box. Sometimes, it contains something valuable (a real object), 
     // and sometimes, it’s empty (null). Instead of checking for null manually, 
@@ -80,11 +86,7 @@ public class UserBookingService {
         }
     }
 
-    public void saveUserToFile() throws IOException{
-        File userFile = new File(Users_Path);
-        objectMapper.writeValue(userFile, usersList);
-        //writeValue serialize java into json file 
-    }
+    
 
     public void fetchBookings() {
 
